@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Home in Space: The Habitat Layout Creator</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <header>
+        <h1>🚀 Your Home in Space: The Habitat Layout Creator</h1>
+        <p>Design your perfect space habitat for long-duration missions</p>
+    </header>
+
+    <main class="app-container">
+        <!-- Control Panel -->
+        <div class="control-panel">
+            <div class="panel-section">
+                <h3>🏗️ Habitat Modules</h3>
+                <div class="module-palette">
+                    <div class="module-item" data-module="living-quarters">
+                        <div class="module-icon">🏠</div>
+                        <span>Living Quarters</span>
+                    </div>
+                    <div class="module-item" data-module="laboratory">
+                        <div class="module-icon">🔬</div>
+                        <span>Laboratory</span>
+                    </div>
+                    <div class="module-item" data-module="greenhouse">
+                        <div class="module-icon">🌱</div>
+                        <span>Greenhouse</span>
+                    </div>
+                    <div class="module-item" data-module="workshop">
+                        <div class="module-icon">🔧</div>
+                        <span>Workshop</span>
+                    </div>
+                    <div class="module-item" data-module="recreation">
+                        <div class="module-icon">🎮</div>
+                        <span>Recreation</span>
+                    </div>
+                    <div class="module-item" data-module="airlock">
+                        <div class="module-icon">🚪</div>
+                        <span>Airlock</span>
+                    </div>
+                    <div class="module-item" data-module="power">
+                        <div class="module-icon">⚡</div>
+                        <span>Power Module</span>
+                    </div>
+                    <div class="module-item" data-module="storage">
+                        <div class="module-icon">📦</div>
+                        <span>Storage</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-section">
+                <h3>📊 Resource Monitor</h3>
+                <div class="resource-display">
+                    <div class="resource-item">
+                        <span class="resource-label">Power:</span>
+                        <div class="resource-bar">
+                            <div class="resource-fill" id="power-fill"></div>
+                        </div>
+                        <span class="resource-value" id="power-value">0/100 kW</span>
+                    </div>
+                    <div class="resource-item">
+                        <span class="resource-label">Oxygen:</span>
+                        <div class="resource-bar">
+                            <div class="resource-fill" id="oxygen-fill"></div>
+                        </div>
+                        <span class="resource-value" id="oxygen-value">0/100%</span>
+                    </div>
+                    <div class="resource-item">
+                        <span class="resource-label">Space:</span>
+                        <div class="resource-bar">
+                            <div class="resource-fill" id="space-fill"></div>
+                        </div>
+                        <span class="resource-value" id="space-value">0/1000 m²</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-section">
+                <h3>⚠️ Safety Monitor</h3>
+                <div class="safety-alerts" id="safety-alerts">
+                    <div class="alert-item safe">✅ All systems nominal</div>
+                </div>
+            </div>
+
+            <div class="panel-section">
+                <h3>📈 Statistics</h3>
+                <div class="stats-display">
+                    <div class="stat-item">
+                        <span class="stat-label">Total Modules:</span>
+                        <span class="stat-value" id="total-modules">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Crew Capacity:</span>
+                        <span class="stat-value" id="crew-capacity">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Total Area:</span>
+                        <span class="stat-value" id="total-area">0 m²</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Power Consumption:</span>
+                        <span class="stat-value" id="power-consumption">0 kW</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-section">
+                <h3>🎛️ Controls</h3>
+                <div class="control-buttons">
+                    <button id="clear-habitat" class="btn btn-danger">Clear All</button>
+                    <button id="save-habitat" class="btn btn-primary">Save Design</button>
+                    <button id="load-habitat" class="btn btn-secondary">Load Design</button>
+                    <button id="export-habitat" class="btn btn-success">Export</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Design Canvas -->
+        <div class="design-canvas">
+            <div class="canvas-header">
+                <h3>🏗️ Habitat Design Canvas</h3>
+                <div class="canvas-tools">
+                    <button id="grid-toggle" class="btn btn-sm">Toggle Grid</button>
+                    <button id="rotate-mode" class="btn btn-sm">Rotate Mode</button>
+                    <button id="connect-mode" class="btn btn-sm">Connect Modules</button>
+                </div>
+            </div>
+            <div class="canvas-area" id="canvas-area">
+                <div class="grid-overlay" id="grid-overlay"></div>
+                <div class="drop-message">
+                    <h4>🏠 Start Building Your Space Habitat!</h4>
+                    <p>Drag modules from the left panel to design your space home</p>
+                    <ul>
+                        <li>🏠 Living Quarters for crew rest</li>
+                        <li>🔬 Laboratory for research</li>
+                        <li>🌱 Greenhouse for food production</li>
+                        <li>⚡ Power modules for energy</li>
+                        <li>🚪 Airlocks for EVA access</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>🌟 NASA Space Apps Challenge 2025 | Built for space exploration and human habitation</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="scripts/modules.js"></script>
+    <script src="scripts/habitat-designer.js"></script>
+    <script src="scripts/resource-calculator.js"></script>
+    <script src="scripts/main.js"></script>
+</body>
+</html>
