@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Home in Space - Habitat Layout Creator</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/konva@9.2.0/konva.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🚀 Your Home in Space: Habitat Layout Creator</h1>
+            <div class="header-controls">
+                <select id="environment-select">
+                    <option value="moon">Moon Environment</option>
+                    <option value="mars">Mars Environment</option>
+                    <option value="asteroid">Asteroid Environment</option>
+                    <option value="space-station">Space Station</option>
+                </select>
+                <button id="save-layout">Save Layout</button>
+                <button id="load-example">Load Example</button>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="panel">
+                    <h3>🏗️ Habitat Shell</h3>
+                    <div class="habitat-controls">
+                        <label>Shape:</label>
+                        <select id="habitat-shape">
+                            <option value="cylinder">Cylinder</option>
+                            <option value="sphere">Sphere</option>
+                            <option value="rectangular">Rectangular</option>
+                            <option value="torus">Torus</option>
+                        </select>
+                        
+                        <label>Diameter (m):</label>
+                        <input type="range" id="habitat-diameter" min="10" max="100" value="30">
+                        <span id="diameter-value">30m</span>
+                        
+                        <label>Height (m):</label>
+                        <input type="range" id="habitat-height" min="5" max="50" value="15">
+                        <span id="height-value">15m</span>
+                        
+                        <button id="create-habitat">Create Habitat</button>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <h3>🏠 Modules Catalog</h3>
+                    <div class="modules-grid">
+                        <div class="module-item" data-type="living-quarters">
+                            <div class="module-icon" style="background: #4CAF50;">🛏️</div>
+                            <span>Living Quarters</span>
+                            <small>4m x 3m</small>
+                        </div>
+                        
+                        <div class="module-item" data-type="laboratory">
+                            <div class="module-icon" style="background: #2196F3;">🔬</div>
+                            <span>Laboratory</span>
+                            <small>5m x 4m</small>
+                        </div>
+                        
+                        <div class="module-item" data-type="storage">
+                            <div class="module-icon" style="background: #FF9800;">📦</div>
+                            <span>Storage</span>
+                            <small>3m x 3m</small>
+                        </div>
+                        
+                        <div class="module-item" data-type="life-support">
+                            <div class="module-icon" style="background: #9C27B0;">⚡</div>
+                            <span>Life Support</span>
+                            <small>4m x 4m</small>
+                        </div>
+                        
+                        <div class="module-item" data-type="command-center">
+                            <div class="module-icon" style="background: #F44336;">🎛️</div>
+                            <span>Command Center</span>
+                            <small>6m x 4m</small>
+                        </div>
+                        
+                        <div class="module-item" data-type="recreation">
+                            <div class="module-icon" style="background: #00BCD4;">🎮</div>
+                            <span>Recreation</span>
+                            <small>4m x 5m</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <h3>📊 Layout Stats</h3>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <span>Total Volume:</span>
+                            <span id="total-volume">0 m³</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>Used Space:</span>
+                            <span id="used-space">0 m³</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>Efficiency:</span>
+                            <span id="efficiency">0%</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>Crew Capacity:</span>
+                            <span id="crew-capacity">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <h3>🌍 Environment Info</h3>
+                    <div id="environment-info">
+                        <p><strong>Moon Environment</strong></p>
+                        <ul>
+                            <li>Gravity: 1.6 m/s²</li>
+                            <li>Radiation: High</li>
+                            <li>Temperature: -173°C to 127°C</li>
+                            <li>Atmosphere: None</li>
+                        </ul>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Canvas Area -->
+            <main class="canvas-area">
+                <div class="canvas-controls">
+                    <button id="view-2d" class="active">2D View</button>
+                    <button id="view-3d">3D View</button>
+                    <button id="clear-all">Clear All</button>
+                    <button id="toggle-grid">Toggle Grid</button>
+                </div>
+                
+                <div id="canvas-container">
+                    <!-- Konva canvas will be inserted here -->
+                </div>
+                
+                <div class="canvas-info">
+                    <span id="mouse-coords">X: 0, Y: 0</span>
+                    <span id="zoom-level">Zoom: 100%</span>
+                </div>
+            </main>
+        </div>
+
+        <!-- Status Bar -->
+        <footer class="status-bar">
+            <span id="status-message">Ready to create your space habitat!</span>
+            <div class="status-indicators">
+                <span class="indicator" id="collision-indicator">✅ No Collisions</span>
+                <span class="indicator" id="boundary-indicator">✅ Within Bounds</span>
+            </div>
+        </footer>
+    </div>
+
+    <script src="habitat-creator.js"></script>
+</body>
+</html>
